@@ -14,7 +14,7 @@ const Tree = (arr) => {
       const right = loop(splitAt + 1, arr.length, arr);
       return NodeFactory(arr[splitAt], buildTree(left), buildTree(right));
     } catch (e) {
-      console.log(e);
+      //   console.log(e);
     }
   };
 
@@ -34,14 +34,14 @@ const Tree = (arr) => {
       }
       return newArray.sort((a, b) => a - b);
     } catch (e) {
-      console.log(e);
+      //   console.log(e);
     }
   };
 
   const root = buildTree(sortArr(arr));
 
   const prettyPrint = (node, prefix = "", isLeft = true) => {
-    if (node === null) {
+    if (node === null || node.right === null || node.left === null) {
       return;
     }
     if (node.right !== null) {
@@ -52,7 +52,6 @@ const Tree = (arr) => {
       prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
     }
   };
-
   return { root, prettyPrint };
 };
 
